@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: #1e1c1d;
-  padding: 0 10%;
+  padding: 0 2%;
 }
 
 /* Logo */
@@ -62,9 +62,6 @@
     display: flex;
   }
   .logo {
-    padding-top: 10%;
-    padding-bottom: 10%;
-
     font-size: 1.7rem;
   }
 
