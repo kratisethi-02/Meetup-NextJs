@@ -24,28 +24,25 @@ function HomePage(props) {
 //          }
 //     }
 // }
-export async function getStaticProps() {
-  //fetch data from api
-  //////////////
+export async function getServerSideProps(context) {
   const client = await MongoClient.connect(
     "mongodb+srv://ksmavask:Tg0JkYumg1VSXWPV@nextjs.3hfy5.mongodb.net/meetups?retryWrites=true&w=majority&appName=nextjs"
   );
   const db = client.db();
-
   const meetupsCollection = db.collection("meetups");
 
   const meetups = await meetupsCollection.find().toArray();
   client.close();
+
   return {
     props: {
       meetups: meetups.map(meetup => ({
         title: meetup.title,
         address: meetup.address,
         image: meetup.image,
-        id: meetup._id.toString()
+        id: meetup._id.toString(),
       }))
-    },
-    revalidate: 1
+    }
   };
 }
 
