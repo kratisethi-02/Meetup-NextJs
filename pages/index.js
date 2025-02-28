@@ -6,7 +6,7 @@ function HomePage(props) {
   return (
   <>
     <Head>
-        <title>React Meetups</title>
+        <title>NextJs Connect</title>
         <meta name="description" content="Explore wide variety of meetup happening around the World"/>
     </Head>
   <MeetupList meetups={props.meetups} />;

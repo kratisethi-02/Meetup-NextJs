@@ -1,20 +1,34 @@
+import { useState } from "react";
 import Link from "next/link";
-import classes from "./MainNavigation.module.css";
+import styles from "./MainNavigation.module.css"; // Import the updated CSS
 
 function MainNavigation() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  function toggleMenuHandler() {
+    setMenuOpen(prev => !prev);
+  }
+
   return (
-    <header className={classes.header}>
-      <div className={classes.logo}>React Meetups</div>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/">All Meetups</Link>
-          </li>
-          <li>
-            <Link href="/new-meetup">Add New Meetup</Link>
-          </li>
-        </ul>
-      </nav>
+    <header className={styles.header}>
+      <div className={styles.logo}>NextJS Connects</div>
+
+      {/* Hamburger Icon */}
+      <div className={styles.hamburger} onClick={toggleMenuHandler}>
+        <div />
+        <div />
+        <div />
+      </div>
+
+      {/* Navigation Links */}
+      <ul className={`${styles["nav-links"]} ${menuOpen ? styles.open : ""}`}>
+        <li>
+          <Link href="/">All Connects</Link>
+        </li>
+        <li>
+          <Link href="/new-meetup">Add Connects</Link>
+        </li>
+      </ul>
     </header>
   );
 }
